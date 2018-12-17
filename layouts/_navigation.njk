@@ -1,0 +1,48 @@
+<section class="hero is-small is-bold" >
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <nav class="breadcrumb is-large" aria-label="breadcrumbs">
+          {% set breadcrumb = "OP" %}
+          <ul>
+          <li><a href="/"> {% if title != "Olli-Pekka Lehtinen" %} {{breadcrumb}} {%endif%} </a></li>
+          <li class="is-active"><a href="#" aria-current="page">{{title}}</a></li>
+          </ul>
+          </nav>            
+          <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+          <div class="navbar-end">
+            <a href="/" class="navbar-item is-active">
+              Home
+            </a>
+            <a href="/music" class="navbar-item">
+              Music
+            </a>
+            <span class="navbar-item">
+              <a class="button is-light is-inverted">
+                <span class="icon">
+                  <i class="fas fa-envelope-open"></i>
+                </span>
+                <span>Contact</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+<div class="hero-body">
+    <div class="container">
+
+      <h2 class="subtitle">
+       {{subtitle}}
+      </h2>
+    </div>
+  </div>
+</section>

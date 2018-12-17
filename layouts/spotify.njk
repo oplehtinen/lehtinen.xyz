@@ -1,0 +1,36 @@
+{% extends "layout.njk" %}
+
+{% import "_card.njk" as card %}
+
+{% block content %}
+
+<div class="columns is-mobile is-multiline is-centered">
+  {% for playlist in data.spotify %}
+    {{ card.card( 
+                  playlist.name, 
+                  playlist.images[0].url, 
+                  playlist.description, 
+                  playlist.external_urls.spotify, 
+                  'Followers', 
+                  playlist.followers.total, 
+                  playlist.genres,
+                  playlist.tracks.items[1].track.preview_url,
+                  loop.index
+                  ) 
+    }}
+    
+    
+  
+  {% endfor %}
+  <script>
+  {% for data in data.spotify %}
+  var player{{loop.index}} = document.getElementById('player{{loop.index}}');
+  {% endfor %}
+    function togglePlay(player, elem) {
+      var id = $(elem).attr("id")
+    player.paused ? (player.play(), $('#' + id + ' .icon').html('<i class="fas fa-pause"></i>')) : (player.pause(), $('#' + id + ' .icon').html('<i class="fas fa-play"></i>'));
+    }
+    </script>
+</div>
+
+{% endblock %}
