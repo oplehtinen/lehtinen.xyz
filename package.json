@@ -2,7 +2,7 @@
   "name": "lehtinen.xyz",
   "version": "0.0.1",
   "description": "A website",
-  "main": "index.js",
+  "main": "build.js",
   "author": "Olli-Pekka Lehtinen",
   "license": "MIT",
   "private": true,
