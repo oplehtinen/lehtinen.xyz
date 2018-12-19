@@ -14,7 +14,7 @@ var spotifyApi = new SpotifyWebApi({
     clientSecret:  process.env.SPOTIFY_CLIENTSECRET
 });
 
-if (!argv.deploy) {
+if (!argv.prod) {
   browserSync({
       server: 'build',
       files: ['src/*.*', 'layouts/*.*', 'assets/*.css'],
@@ -30,7 +30,7 @@ else {
   })
 }
 
-console.log(process.env.NODE_ENV)
+console.log(argv)
 
 function build (callback) {
 apiData( ).then(function(apidata) {
