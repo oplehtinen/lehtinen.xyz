@@ -8,7 +8,7 @@ var SpotifyWebApi = require('spotify-web-api-node')
 var _ = require('underscore');
 var browserSync = require('browser-sync')
 var argv = require('minimist')(process.argv)
-var asset = require('metalsmith-static')
+var asset = require('metalsmith-assets')
 
 var spotifyApi = new SpotifyWebApi({
     clientId: process.env.SPOTIFY_CLIENTID,
@@ -43,7 +43,7 @@ Metalsmith(__dirname)
   })
   .use(data({
     links: {
-      src: './src/data.json',
+      src: './data/data.json',
       property: 'links'
     },
     spotify: function() {
@@ -53,24 +53,25 @@ Metalsmith(__dirname)
   }))
   .source('./src')
   .destination('./build')
-  .use(asset({
-    "src" : "./src/static",
-    "dest" : "."
-  }))
-  .clean(false)
-
+  .clean(true)
   .use(markdown())
-  .use(permalinks())
+  .use(permalinks({
+    relative:false
+  }))
   .use(layouts({
     engine: 'nunjucks' },
   ))
   .use(inplace({
     "suppressNoFilesError":true
   }))
-
+  .use(asset({
+    source : "./static",
+    destination : "./"
+  }))
 
   .build(function(err, files) {
     if (err) { throw err }
+    // console.log(files)
     callback()
   });
 })
