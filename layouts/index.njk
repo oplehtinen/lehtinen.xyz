@@ -1,0 +1,24 @@
+{% extends "layout.njk" %}
+
+{% import "_icons.njk" as icon %}
+
+{% block content %}
+<p class="buttons is-8">
+
+    <p>{{data.links.spotify.name | safe }}</p>
+    {% for link in data.links %}
+  
+
+    {{ icon.icon(link.icon,link.name,link.link ) }}
+
+    {% endfor %}
+</p>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
+<script>
+  var typed = new Typed('#typed', {
+    stringsElement: '#typed-strings',
+    smartBackspace: true,
+    typeSpeed: 50
+  });
+</script>
+{% endblock %}
