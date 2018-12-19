@@ -11,7 +11,7 @@
                   playlist.images[0].url, 
                   playlist.description, 
                   playlist.external_urls.spotify, 
-                  'Followers', 
+                  'followers', 
                   playlist.followers.total, 
                   playlist.genres,
                   playlist.tracks.items[1].track.preview_url,
@@ -25,6 +25,9 @@
   <script>
   {% for data in data.spotify %}
   var player{{loop.index}} = document.getElementById('player{{loop.index}}');
+  player{{loop.index}}.onended = function() {
+    $('.fa-pause').removeClass('fa-pause').addClass('fa-play')
+  }
   {% endfor %}
     function togglePlay(player, elem) {
       var id = $(elem).attr("id")

@@ -2,25 +2,24 @@
   <div class="column is-one-third-desktop is-one-quarter-widescreen is-half-tablet is-three-quarters-mobile" >
   <a href={{ link }}> 
   <div class="card has-equal-height">
-    <div class="card-image">
-      <figure class="image is-square">
+    <div class="card-image ">
+         
+      <figure class="image is-square ">
         <img src={{ image }} alt="Cover for" {{ heading }}>
       </figure>
+      <div class="field  inset-shadow is-overlay">
+        
+      <p class="title is-5 is-bottom has-text-centered has-text-white has-shadow">{{heading}} </p>
+    </div>
     </div>
     <div class="card-content">
-        <div class="field">
-          <div class="tags has-addons is-paddingless">
-           <span class="tag is-dark">{{tagname}}</span>
-           <span class="tag is-success">{{tagplus}}</span>
-         </div>
-        </div>
-        <p class="title is-5">{{heading}} </p>
+        
         {% if description|length !== 0 %}
         <p class="has-text-dark">{{ description | safe }}</p>
         {% else %}
         <div class="tags">
           {% for genre in genres %}
-          <span class="tag">{{genre}}</span>
+          <span class="tag has-text-weight-semibold">{{genre}}</span>
           {% endfor %}
         </div>
         {% endif %}
@@ -29,12 +28,18 @@
       <audio id="player{{index}}">
         <source src="{{preview}}" type='audio/mpeg; codecs="mp3"'>
       </audio>
-      <a class="button is-success is-inverted is-medium is-fullwidth card-footer-item" id="player-{{index}}" onClick="togglePlay(player{{index}},this)">
-        <span class="icon">
+      <div class="card-footer-item  is-size-7">
+      <a class="button is-success is-fullwidth is-inverted" id="player-{{index}}" onClick="togglePlay(player{{index}},this)">
+        <span class="icon is-large">
           <i class="fas fa-play"></i>
         </span>
         <span>Preview</span>
       </a>
+      </div>
+      <div class="card-footer-item  is-size-7">
+          <span class="tag is-success is-size-7">{{tagplus}} </span>
+          <span class="tag is-white">{{tagname}}</span>
+      </div>
     </footer>
   </div>
   </a>
