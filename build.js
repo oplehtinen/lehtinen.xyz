@@ -8,6 +8,7 @@ var SpotifyWebApi = require('spotify-web-api-node')
 var _ = require('underscore');
 var browserSync = require('browser-sync')
 var argv = require('minimist')(process.argv)
+var asset = require('metalsmith-static')
 
 var spotifyApi = new SpotifyWebApi({
     clientId: process.env.SPOTIFY_CLIENTID,
@@ -17,7 +18,7 @@ var spotifyApi = new SpotifyWebApi({
 if (!argv.prod) {
   browserSync({
       server: 'build',
-      files: ['src/*.*', 'layouts/*.*', 'assets/*.css'],
+      files: ['src/*.*', 'layouts/*.*', 'assets/*.css', 'build.js'],
       middleware: function (req, res, next) {
           build(next);
       }
@@ -30,7 +31,6 @@ else {
   })
 }
 
-console.log(argv)
 
 function build (callback) {
 apiData( ).then(function(apidata) {
@@ -41,23 +41,33 @@ Metalsmith(__dirname)
     generator: "Metalsmith",
     url: "http://www.lehtinen.xyz/"
   })
-  .source('./src')
-  .destination('./build')
-  .clean(false)
   .use(data({
+    links: {
+      src: './src/data.json',
+      property: 'links'
+    },
     spotify: function() {
       return apidata
-    }
+    },
+  
   }))
+  .source('./src')
+  .destination('./build')
+  .use(asset({
+    "src" : "./src/static",
+    "dest" : "."
+  }))
+  .clean(false)
+
   .use(markdown())
   .use(permalinks())
   .use(layouts({
-    engine: 'nunjucks'
-  },
+    engine: 'nunjucks' },
   ))
   .use(inplace({
     "suppressNoFilesError":true
   }))
+
 
   .build(function(err, files) {
     if (err) { throw err }

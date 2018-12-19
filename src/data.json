@@ -1,0 +1,39 @@
+{
+    "links": [
+        {
+            "name": "Spotify",
+            "icon": "spotify",
+            "link": ""
+        },
+        {
+            "name": "Twitter",
+            "icon": "twitter",
+            "link": ""
+        },
+        {
+            "name": "LinkedIn",
+            "icon": "linkedin",
+            "link": ""
+        },
+        {
+            "name": "Facebook",
+            "icon": "facebook",
+            "link": ""
+        },
+        {
+            "name": "Keybase",
+            "icon": "keybase",
+            "link": ""
+        },
+        {
+            "name": "Codepen",
+            "icon": "codepen",
+            "link": ""
+        },
+        {
+            "name": "Soundcloud",
+            "icon": "soundcloud",
+            "link": ""
+        }
+    ]
+}
