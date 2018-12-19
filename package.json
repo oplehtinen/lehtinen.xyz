@@ -7,6 +7,9 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "browser-sync": "^2.26.3",
+    "eslint": "^5.10.0",
+    "global": "^4.3.2",
     "jstransformer-nunjucks": "^0.5.0",
     "metalsmith": "^2.3.0",
     "metalsmith-data": "^0.3.0",
@@ -15,8 +18,17 @@
     "metalsmith-markdown": "^1.1.0",
     "metalsmith-permalinks": "^2.0.0",
     "metalsmith-writemetadata": "^0.4.5",
+    "minimist": "^1.2.0",
     "request": "^2.88.0",
     "spotify-web-api-node": "^4.0.0",
-    "underscore": "^1.9.1"
+    "underscore": "^1.9.1",
+    "xo": "^0.23.0"
+  },
+  "scripts": {
+    "test": "xo"
+  },
+  "xo": {
+    "space": true,
+    "prettier": true
   }
 }

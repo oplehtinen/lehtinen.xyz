@@ -6,18 +6,38 @@ var data = require('metalsmith-data')
 var inplace = require('metalsmith-in-place')
 var SpotifyWebApi = require('spotify-web-api-node')
 var _ = require('underscore');
+var browserSync = require('browser-sync')
+var argv = require('minimist')(process.argv)
 
 var spotifyApi = new SpotifyWebApi({
     clientId: process.env.SPOTIFY_CLIENTID,
     clientSecret:  process.env.SPOTIFY_CLIENTSECRET
 });
 
+if (!argv.deploy) {
+  browserSync({
+      server: 'build',
+      files: ['src/*.*', 'layouts/*.*', 'assets/*.css'],
+      middleware: function (req, res, next) {
+          build(next);
+      }
+  })
+} 
 
+else {
+  build(function () {
+      console.log('Done building.');
+  })
+}
+
+console.log(process.env.NODE_ENV)
+
+function build (callback) {
 apiData( ).then(function(apidata) {
-        
-  Metalsmith(__dirname)
+
+Metalsmith(__dirname)
   .metadata({
-    title: "Olli-Pekka Lehtinen",
+    title: 'Olli-Pekka Lehtinen',
     generator: "Metalsmith",
     url: "http://www.lehtinen.xyz/"
   })
@@ -36,12 +56,15 @@ apiData( ).then(function(apidata) {
   },
   ))
   .use(inplace({
-    "suppressNoFilesError":"true"
+    "suppressNoFilesError":true
   }))
+
   .build(function(err, files) {
-    if (err) { throw err; }
+    if (err) { throw err }
+    callback()
   });
 })
+}
 
 async function apiData() {
   const playlist = await spotifyDetailsData()
