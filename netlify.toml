@@ -1,0 +1,5 @@
+[[redirects]]
+    from="https://www.lehtinen.xyz/*"
+    to="https://op.lehtinen.xyz/:splat"
+    status= 301
+    force=true
