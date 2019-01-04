@@ -3,12 +3,12 @@
         {
             "name": "Spotify",
             "icon": "spotify",
-            "link": ""
+            "link": "https://open.spotify.com/user/dimits?si=JTk4snf0Q5utGUqbl5g--A"
         },
         {
             "name": "Twitter",
             "icon": "twitter",
-            "link": ""
+            "link": "https://twitter.com/oplehtinen"
         },
         {
             "name": "LinkedIn",
@@ -18,22 +18,22 @@
         {
             "name": "Facebook",
             "icon": "facebook",
-            "link": ""
+            "link": "https://www.facebook.com/oplehtinen"
         },
         {
             "name": "Keybase",
             "icon": "keybase",
-            "link": ""
+            "link": "http://keybase.io/oplehtinen"
         },
         {
-            "name": "Codepen",
+            "name": "CodePen",
             "icon": "codepen",
-            "link": ""
+            "link": "https://codepen.io/oplehtinen/"
         },
         {
-            "name": "Soundcloud",
+            "name": "SoundCloud",
             "icon": "soundcloud",
-            "link": ""
+            "link": "https://soundcloud.com/olli-pekka-lehtinen"
         }
     ]
 }

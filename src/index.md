@@ -10,4 +10,4 @@ title: Olli-Pekka Lehtinen
     <p>You should browse around for more information, <br/>or
     you can find me around the internet:</p>
 </div>
-<span class="subtitle is-2" id="typed"></span>
+<span class="subtitle is-3" id="typed"></span>
