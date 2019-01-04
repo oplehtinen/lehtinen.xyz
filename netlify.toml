@@ -3,3 +3,8 @@
     to="https://op.lehtinen.xyz/:splat"
     status= 301
     force=true
+[[redirects]]
+    from="https://lehtinen.xyz/*"
+    to="https://op.lehtinen.xyz/:splat"
+    status= 301
+    force=true
