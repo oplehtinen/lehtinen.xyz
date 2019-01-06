@@ -10,5 +10,5 @@
     force=true
 [[redirects]]
     from="/*"
-    to"/404/"
+    to="/404/"
     status=301
