@@ -9,6 +9,7 @@ var _ = require('underscore');
 var browserSync = require('browser-sync')
 var argv = require('minimist')(process.argv)
 var asset = require('metalsmith-assets')
+var gallery = require('./gallery.js')
 
 var spotifyApi = new SpotifyWebApi({
     clientId: process.env.SPOTIFY_CLIENTID,
@@ -39,7 +40,7 @@ Metalsmith(__dirname)
   .metadata({
     title: 'Olli-Pekka Lehtinen',
     generator: "Metalsmith",
-    url: "http://www.lehtinen.xyz/"
+    url: "https://op.lehtinen.xyz/"
   })
   .use(data({
     links: {
@@ -50,6 +51,9 @@ Metalsmith(__dirname)
       return apidata
     },
   
+  }))
+  .use(gallery({
+    
   }))
   .source('./src')
   .destination('./build')
@@ -68,6 +72,7 @@ Metalsmith(__dirname)
     source : "./static",
     destination : "./"
   }))
+
 
   .build(function(err, files) {
     if (err) { throw err }

@@ -1,0 +1,12 @@
+{% extends "layout.njk" %}
+
+
+{% block content %}
+
+<div class="columns is-mobile is-multiline is-centered">
+  {% for image in gallery %}
+    <p>{{ image.path | safe }}</p>
+  {% endfor %}
+</div>
+
+{% endblock %}
