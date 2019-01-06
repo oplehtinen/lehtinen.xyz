@@ -1,12 +1,45 @@
 {% extends "layout.njk" %}
-
+{% import "_gallerycard.njk" as card %}
 
 {% block content %}
-
-<div class="columns is-mobile is-multiline is-centered">
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<div class="photogrid columns is-mobile is-multiline is-centered">
   {% for image in gallery %}
-    <p>{{ image.path | safe }}</p>
+    {{card.image('bla',image.path,'fdfdhgdg')}}
   {% endfor %}
 </div>
+
+<script>
+
+
+var $imgs = $("img.lazy");
+var $win = $(window);
+var $grid = $('.photogrid').isotope({
+  itemSelector: '.photocontainer',
+  masonry: {
+    columnWidth: 100
+  }
+});
+    function loadVisible($els, trigger) {
+        $els.filter(function () {
+            var rect = this.getBoundingClientRect();
+            return rect.top >= 0 && rect.top <= window.innerHeight;
+        }).trigger(trigger);
+    }
+  $grid.isotope('on', 'layoutComplete', function () {
+        loadVisible($imgs, 'lazylazy');
+    });
+
+    $win.on('scroll', function () {
+        loadVisible($imgs, 'lazylazy');
+    });
+
+    $imgs.lazyload({
+        effect: "fadeIn",
+        failure_limit: Math.max($imgs.length - 1, 0),
+        event: 'lazylazy'
+    });
+
+</script>
 
 {% endblock %}

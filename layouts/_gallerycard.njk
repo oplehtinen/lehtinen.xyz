@@ -1,0 +1,19 @@
+{% macro image(heading, image, description) %}
+  <div class="photocontainer column is-one-quarter-desktop is-one-quarter-widescreen is-half-tablet is-three-quarters-mobile">
+    <div class="card">
+        <div class="card-image">
+            <figure class="image is-square">
+                <img data-original={{ image }} class="lazy" alt="Placeholder image">
+            </figure>
+        </div>
+        <div class="card-content">
+            <p class="title">
+            {{heading}}
+            </p>
+            {% if description|length !== 0 %}
+            <p class="has-text-dark">{{ description | safe }}</p>
+            {% endif %}
+        </div>
+    </div>
+  </div>
+{% endmacro %}

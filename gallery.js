@@ -15,15 +15,19 @@ function gallery(func) {
             const imgpath = path.parse(file)
  
             if (imgpath.dir === 'gallery') {
-                const pathstring = imgpath.dir + '/' + imgpath.base
+                const pathstring = '/' + imgpath.dir + '/' + imgpath.base
                 const jpeg = fs.readFileSync(__dirname + '/src/' + pathstring)
                 const buffer = jpeg.slice(0,65635)
                 const parser = require('exif-parser').create(buffer)
                 const result = parser.parse()
                 
-                const obj = {path: pathstring, metadata: result.tags}
+                const obj = {path: pathstring, metadata: result.tags, size: result.getImageSize()}
                 gallery.push(obj)
             }
+        })
+        fs.writeFile(__dirname + '/galleryhelper.json', JSON.stringify(gallery,null,'\t'), (err) => {
+            if (err) throw err;
+            console.log('The file has been saved!');
         })
         metalsmith.metadata().gallery = gallery
         done()

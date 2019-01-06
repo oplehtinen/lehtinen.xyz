@@ -10,6 +10,7 @@ var browserSync = require('browser-sync')
 var argv = require('minimist')(process.argv)
 var asset = require('metalsmith-assets')
 var gallery = require('./gallery.js')
+var sharp = require('@emanueleperuffo/metalsmith-sharp')
 
 var spotifyApi = new SpotifyWebApi({
     clientId: process.env.SPOTIFY_CLIENTID,
@@ -58,6 +59,7 @@ Metalsmith(__dirname)
   .source('./src')
   .destination('./build')
   .clean(true)
+
   .use(markdown())
   .use(permalinks({
     relative:false
@@ -72,7 +74,15 @@ Metalsmith(__dirname)
     source : "./static",
     destination : "./"
   }))
-
+  .use(sharp({
+    src: 'gallery/*.jpg',
+    methods: [
+      {
+        name: 'resize',
+        args: [500]
+      },
+    ]
+  }))
 
   .build(function(err, files) {
     if (err) { throw err }
