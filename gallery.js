@@ -27,7 +27,6 @@ function gallery(func) {
         })
         fs.writeFile(__dirname + '/galleryhelper.json', JSON.stringify(gallery,null,'\t'), (err) => {
             if (err) throw err;
-            console.log('The file has been saved!');
         })
         metalsmith.metadata().gallery = gallery
         done()
