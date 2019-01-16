@@ -5,12 +5,12 @@
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 <div class="photogrid columns is-mobile is-multiline is-centered">
   {% for image in gallery %}
-    {{card.image('bla',image.path,'fdfdhgdg')}}
+    {{card.image('bla',image.thumbpath,'fdfdhgdg', image.thumbSize.width, image.thumbSize.height)}}
   {% endfor %}
 </div>
 
 <script>
-
+/*
 
 var $imgs = $("img.lazy");
 var $win = $(window);
@@ -39,7 +39,7 @@ var $grid = $('.photogrid').isotope({
         failure_limit: Math.max($imgs.length - 1, 0),
         event: 'lazylazy'
     });
-
+*/
 </script>
 
 {% endblock %}

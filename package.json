@@ -24,7 +24,7 @@
     "metalsmith-writemetadata": "^0.4.5",
     "minimist": "^1.2.0",
     "request": "^2.88.0",
-    "sharp": "^0.21.1",
+    "sharp": "^0.21.2",
     "spotify-web-api-node": "^4.0.0",
     "underscore": "^1.9.1",
     "xo": "^0.23.0"

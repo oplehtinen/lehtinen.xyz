@@ -1,9 +1,9 @@
-{% macro image(heading, image, description) %}
+{% macro image(heading, image, description, width, height) %}
   <div class="photocontainer column is-one-quarter-desktop is-one-quarter-widescreen is-half-tablet is-three-quarters-mobile">
     <div class="card">
-        <div class="card-image">
+        <div class="card-image" style="height={{ height }}">
             <figure class="image">
-                <img data-original={{ image }} class="lazy" alt="Placeholder image">
+                <img data-original={{ image + '.jpg' }} class="lazy" alt="Placeholder image" width={{ width }} height={{ height }}>
             </figure>
         </div>
         <div class="card-content">
